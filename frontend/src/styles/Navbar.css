@@ -1,0 +1,172 @@
+:root {
+  --color-1: white;
+  --bg-color: black;
+  --h-color: #303134;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  background-color: var(--bg-color);
+  height: 60px;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.link-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: -200px;
+  z-index: 5;
+  width: 260px;
+  background-color: var(--bg-color);
+  transition: all 0.3s ease-in-out;
+  justify-content: space-evenly;
+}
+
+.nav-link {
+  position: relative;
+  height: 55px;
+  font-size: large;
+  padding: 20px 30px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--color-1);
+  font-family: "Roboto", sans-serif;
+  justify-content: flex-end;
+  width: 100%;
+  box-sizing: border-box;
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-link:hover {
+  color: skyblue;
+}
+
+.tooltip {
+  position: absolute;
+  top: 50%;
+  left: calc(100% + 1px);
+  transform: translateY(-50%);
+  background: linear-gradient(45deg, slategray, pink);
+  color: black;
+  font-weight: 500;
+  padding: 5px 8px;
+  border-radius: 5px;
+  text-wrap: nowrap;
+  font-size: 13px;
+  opacity: 0;
+  scale: 0.2;
+  visibility: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-link:hover .tooltip {
+  opacity: 1;
+  scale: 1;
+  visibility: visible;
+}
+
+.icon {
+  margin-left: 12px;
+  margin-bottom: 5px;
+}
+
+#sidebar-active {
+  display: none;
+}
+
+.open-sidebar-button {
+  padding: 10px;
+  padding-left: 0;
+  display: none;
+  cursor: pointer;
+}
+
+.close-sidebar-button {
+  display: none;
+  cursor: pointer;
+}
+
+@media (max-width: 720px) {
+  .home-link {
+    margin-top: 15px;
+  }
+  .tooltip {
+    background: transparent;
+    color: transparent;
+  }
+  .close-sidebar-button {
+    display: block;
+    padding-right: 120px;
+    padding-top: 10px;
+    cursor: pointer;
+  }
+  .open-sidebar-button {
+    display: block;
+    padding: 20px;
+    cursor: pointer;
+  }
+  #sidebar-active {
+    display: none;
+  }
+  #sidebar-active:checked ~ .link-container {
+    left: 0;
+    z-index: 10;
+  }
+  .link-container {
+    padding-top: 0;
+    left: -100%;
+    width: 200px;
+    position: fixed;
+    transition: all 0.3s ease-in-out;
+    border-right: 1px solid slategray;
+    justify-content: flex-start;
+  }
+  .nav-link {
+    justify-content: flex-start;
+  }
+  .nav-link:hover {
+    background-color: var(--h-color);
+    border-right: 3px solid white;
+  }
+  #sidebar-active:checked ~ .link-container {
+    left: 0;
+  }
+}
+
+.title {
+  color: white;
+  z-index: 100;
+}
+
+.login {
+  margin-left: auto;
+  padding: 6px 16px;
+  border: 2px solid whitesmoke;
+  color: white;
+  background-color: black;
+  border-radius: 20px;
+  margin-right: 20px;
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 5px;
+}
+.login:hover {
+  background-color: var(--h-color);
+  color: white;
+}
